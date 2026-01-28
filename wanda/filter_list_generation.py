@@ -126,12 +126,10 @@ def main_customer_filter_lists(
     for ase in as_list:
         if ase['asn'] in enabled_asn:
             kwargs = {}
-            print(ase["config_context"])
             if ase["config_context"] and "ipv4_prefixes" in ase["config_context"]:
                 kwargs["ipv4_prefixes"] = ase["config_context"]["ipv4_prefixes"]
             if ase["config_context"] and "ipv6_prefixes" in ase["config_context"]:
                 kwargs["ipv6_prefixes"] = ase["config_context"]["ipv6_prefixes"]
-            print(kwargs)
             as_obj = AutonomousSystem(asn=ase['asn'], name=ase['name'], irr_as_set=ase['irr_as_set'],**kwargs)
             prepared_asns.append((irrd_client,as_obj,extended_filtering_as,filter_lists))
 

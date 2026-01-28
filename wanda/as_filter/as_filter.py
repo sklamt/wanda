@@ -22,7 +22,6 @@ class ASFilter:
         v6_set = set()
 
         irr_names = self.autos.get_irr_names()
-        print(dir(self.autos))
 
         if not irr_names:
             result_entries_v4, result_entries_v6 = self.irrd_client.generate_prefix_lists_for_asn(self.autos.asn)
@@ -34,7 +33,7 @@ class ASFilter:
                 result_entries_v4, result_entries_v6 = self.irrd_client.generate_prefix_lists(irr_name)
                 v4_set.update(result_entries_v4)
                 v6_set.update(result_entries_v6)
-        print(self.autos.ipv4_prefixes)
+
         v4_set.update(self.autos.ipv4_prefixes)
         v6_set.update(self.autos.ipv6_prefixes)
         
